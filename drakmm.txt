@@ -1,0 +1,60 @@
+local ui = gethui and gethui() or game.CoreGui
+
+local gui = Instance.new("ScreenGui")
+gui.IgnoreGuiInset = true
+gui.Parent = ui
+
+local frame = Instance.new("Frame")
+frame.Parent = gui
+frame.Size = UDim2.new(1, 0, 1, 0)
+frame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+
+local text = Instance.new("TextLabel")
+text.Parent = frame
+text.AnchorPoint = Vector2.new(0.5, 0.5)
+text.Position = UDim2.new(0.5, 0, 0.4, 0)
+text.Size = UDim2.new(0.8, 0, 0.15, 0)
+text.BackgroundTransparency = 1
+text.Text = "Script is under maintenance"
+text.Font = Enum.Font.GothamBold
+text.TextScaled = true
+text.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+local copyBtn = Instance.new("TextButton")
+copyBtn.Parent = frame
+copyBtn.AnchorPoint = Vector2.new(0.5, 0.5)
+copyBtn.Position = UDim2.new(0.5, 0, 0.62, 0)
+copyBtn.Size = UDim2.new(0.45, 0, 0.1, 0)
+copyBtn.Text = "Copy Discord"
+copyBtn.Font = Enum.Font.GothamBold
+copyBtn.TextScaled = true
+copyBtn.BackgroundColor3 = Color3.fromRGB(40, 120, 255)
+copyBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+local corner1 = Instance.new("UICorner", copyBtn)
+corner1.CornerRadius = UDim.new(0, 12)
+
+copyBtn.MouseButton1Click:Connect(function()
+	setclipboard("https://discord.gg/W3VwkUj6kf")
+	copyBtn.Text = "Copied!"
+	task.wait(1.2)
+	copyBtn.Text = "Copy Discord"
+end)
+
+local closeBtn = Instance.new("TextButton")
+closeBtn.Parent = frame
+closeBtn.AnchorPoint = Vector2.new(0.5, 0.5)
+closeBtn.Position = UDim2.new(0.5, 0, 0.78, 0)
+closeBtn.Size = UDim2.new(0.45, 0, 0.1, 0)
+closeBtn.Text = "Close"
+closeBtn.Font = Enum.Font.GothamBold
+closeBtn.TextScaled = true
+closeBtn.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+closeBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+
+local corner2 = Instance.new("UICorner", closeBtn)
+corner2.CornerRadius = UDim.new(0, 12)
+
+closeBtn.MouseButton1Click:Connect(function()
+	gui:Destroy()
+end)
